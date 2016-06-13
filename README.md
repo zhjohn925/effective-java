@@ -1,1 +1,1 @@
-# effective-java
+# java learning notes
