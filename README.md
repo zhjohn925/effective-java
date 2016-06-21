@@ -35,3 +35,4 @@ an atomic action is one that effectively happens all at once.
    			public static final Thing[] values() {
    				return PRIVATE_VALUES.clone();
    			}	  		   		
+
