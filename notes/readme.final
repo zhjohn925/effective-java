@@ -1,0 +1,6 @@
+final is a modifier applicable for classes, methods and varaibles.
+--if a class declared as final, then we can't extend that class
+--if a method declared as final, then we can't override that method
+  in the child class
+--if a variable declared as final, then it will become constant, and we can't
+  perform re-assignment for that variable.	
