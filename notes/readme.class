@@ -1,0 +1,38 @@
+--interface .vs. abstract class .vs. concrete class
+  1. if we donot know anything about implementation just we have requirement
+     specification (100% abstract) then we should go for interface.
+     Example: Servlet
+  2. if we are talking about implementation but not completely (partial
+     implementation) then we should go for abstract class.
+     Example: GenericServlet & HTTPServlet
+  3. if we are talking about implementation completely and ready to provide
+     service then we should go for concrete class.
+     Example: MyOwnServlet
+
+--interface .vs. abstract
+  1a. interface is also considered as 100% pure abstract class.
+      every method is always public and abstract whether we are
+      declaring or not.
+  1b. the method in abstract class need not be public and abstract.
+      in adddition to abstract methods we can take concrete methods also.
+  2a. we can't declare interface method with the following modifiers.
+      public so not--> private, protected
+      abstract so not--> final, static, synchronized, native, strictfp
+  2b. There are no restriction on abstract class method modifiers.
+  3a. -variables in interface are always public, static, and final
+       whether we are declaring or not. we can't declare variables with
+      -the following modifiers: private, protected, transient, volatile
+      -for interface variables compulsory we should perform initialization
+       at the time of declaration otherwise we will get compile time error.
+  3b. -the variables in abstract class need not be public, static and final.
+      -there are no restriction on abstract class variable modifiers.
+      -For abstract class variables it is not required to perform
+       initialization at the time of declaration.
+  4a. Inside interface we can't declare instance and static blocks.
+  4b. Inside abstract class we can declare instance and static blocks.
+  5a. Inside interface, we can't declare constructor
+  5b. Inside abstract class we can declare constructor, which will be
+      executed at the time of child object creation.
+
+
+

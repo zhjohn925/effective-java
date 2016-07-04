@@ -1,6 +1,27 @@
-final is a modifier applicable for classes, methods and varaibles.
---if a class declared as final, then we can't extend that class
---if a method declared as final, then we can't override that method
-  in the child class
---if a variable declared as final, then it will become constant, and we can't
-  perform re-assignment for that variable.	
+
+https://www.youtube.com/watch?v=Dxpdo9BUGss&list=PLYPjPMiw3_YsVockWfuuhoP86YPDUXp4f
+
+final:
+  final is a modifier applicable for classes, methods and varaibles.
+  --if a class declared as final, then we can't extend that class
+  --if a method declared as final, then we can't override that method
+    in the child class
+  --if a variable declared as final, then it will become constant, and we can't
+    perform re-assignment for that variable.	
+
+finally:
+  finally is a block always associated with try catch to maintain cleanup code,
+  meant for cleanup activities related to try block.
+    try {
+      //risky code
+    } catch (X e) {
+      //handling code
+    } finally {
+      //cleanup code (ie cleanup resources used in try block)
+    }
+
+finalize():
+  finalize() is a method which is always invoked by garbage collector just before
+  destroying an object to perform cleanup activities.
+  meant for cleanup activities related to object.
+

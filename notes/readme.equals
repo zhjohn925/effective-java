@@ -1,0 +1,14 @@
+Difference between == operator and .equals() method ?
+  -In general we use == operator for reference comparison,
+   whereas .equals() method for content comparison
+  -.equals() method present in object class also meant for reference
+   comparison only based on our requirement we can override for
+   content comparison.
+  -In String class, all wrapper class and all collection classes .equals()
+   method is overriden for content comparison.
+
+  String s1 = new String("durga");
+  String s2 = new String("durga");
+  System.out.println(s1==s2);         ==> false
+  System.out.println(s1.equals(s2));  ==> true
+

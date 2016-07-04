@@ -1,0 +1,11 @@
+--String and StringBuffer
+  String is immutable, StringBuffer is mutable
+  Example:
+  String s = new String("durga ");                       StringBuffer sb = new StringBuffer("durga ");
+  //new object is created but not get assigned           //sb is mutable
+  s.concat("software");                                  sb.append("software");
+  System.out.println(s);                                 System.out.println(sb);
+  //output:  durga                                       //output:  durga software
+
+
+

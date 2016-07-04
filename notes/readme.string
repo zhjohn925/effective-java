@@ -1,0 +1,26 @@
+--String and StringBuffer
+  String is immutable, StringBuffer is mutable
+  Example:
+  String s = new String("durga ");                       StringBuffer sb = new StringBuffer("durga ");
+  //new object is created but not get assigned           //sb is mutable
+  s.concat("software");                                  sb.append("software");
+  System.out.println(s);                                 System.out.println(sb);
+  //output:  durga                                       //output:  durga software
+
+--StringBuffer and StringBuilder
+  Both are the same except for below:
+  1. every method in StringBuffer is synchronized,  but no method in StringBuilder is synchronized
+  2. At a time only one thread is allowed to operate on StringBuffer object. Hence StringBuffer
+     object is thread-safe.
+     At a time multiple threads are allowed to operate on StringBuilder object. Hence StringBuilder
+     is not thread-safe.
+  3. StringBuffer increases waiting time of threads and hence relatively performance is low.
+     StringBuilder has relatively high performance.
+  4. StringBuffer introduced in 1.0 version,  StringBuilder in 1.5 version.
+
+--The Rules:
+   1. if the content is fixed and won't change frequently then we go for String
+   2. if the content is not fixed and keep on changing but Thread safety is required then go for StingBuffer
+   3. if the content is not fixed and keep on changing but Thread safety is not required then go for StingBuilder
+
+

@@ -1,0 +1,65 @@
+Important Conclusions:
+
+  -The modifiers which are applicable for inner classes but not for outer
+   classes:  private, protected, static
+  -The modifiers which are applicable for classes but not for interface:
+   final
+  -The modifiers which applicable for classes but not for enums:
+   final, abstract
+  -The modifier which is applicable only for methods and which we can't
+   use anywhere else:  native
+  -The only modifiers which are applicable for contractors:
+   public, private, protected, default
+  -The only applicable modifier for local variable:
+   final
+
+
+The table:
+
+                   classes                                      interface      enum  enum
+   modifier        outer  inner   methods   variables   blocks  outer  inner   outer inner    constructors modifier
+ -----------------+------+------+---------+-----------+--------+------+------+------+------+--------------------------------
+   public            y      y        y         y                  y      y       y     y         y         public
+   private                  y        y         y                         y             y         y         private
+   protected                y        y         y                         y             y         y         protected
+   <default>         y      y        y         y                  y      y       y     y         y         <default>
+   final             y      y        y         y                                                           final
+   abstract          y      y        y                            y      y                                 abstract
+   static                   y        y         y          y              y             y                   static
+   synchronized                      y                    y                                                synchronized
+   native                            y                                                                     native
+   strictfp          y      y        y                            y      y       y     y                   strictfp
+   transient                                   y                                                           transient
+   volatile                                    y                                                           volatile
+
+There are rules:
+
+  -The interface which is declared inside a class is always static whether
+   we are declaring or not.
+  -The interface which is declared inside interface is always public and
+   static whether we are declaring or not.
+  -The class which is declared inside interface is always public and static
+   whether we are declaring or not.
+
+  class A {                         |   class A {
+    class B {                       |     static interface B {
+                                    |       //inner interface must be static
+    }                               |     }
+  }                                 |   }
+                                    |
+  interface A {                     |   interface A {
+    public static                   |     public static
+    interface B {                   |     class B {
+      //inner interface must be     |       //inner class must be
+      //public & static             |       //public & static
+    }                               |     }
+  }                                 |   }
+
+
+Access Specifiers .vs. Access Modifiers
+  1. in old languages like C++, public, private, protected, default are considered as Access Specifiers.
+     Except this, the remaining (like static) are considered as Access modifiers.
+  2. but in java there is no terminology like specifiers. all are by default considered as modifiers only
+     public, private, protected, default, final, static,
+     synchronized, abstract, native, stictfp(1.2v), transient, volatile
+
