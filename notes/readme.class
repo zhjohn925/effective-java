@@ -34,5 +34,16 @@
   5b. Inside abstract class we can declare constructor, which will be
       executed at the time of child object creation.
 
+--Difference between Parent p = new Child(); and Child c = new Child();
+
+  1a. if we know exect runtime type of object then we should use "Child c = new Child();"
+  1b. if we donot know exect runtime type of object then we should use "Parent p = new Child();" -- polymorphism
+
+  2a. by using child reference we can call both parent and child class methods.
+  2b. by using parent reference we can call only methods available in parent class and child specific methods we
+      can not call.
+
+  3a. we can use child reference to hold only for that particular child class object only.
+  3b. we can use parent reference to hold any child class object.
 
 

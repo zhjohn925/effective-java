@@ -1,0 +1,33 @@
+--overload .vs. override
+
+   Property              Overloading                      Overriding
+
+  1. method names        Must be same                     Must be same
+
+  2. argument types      Must be different                Must be same
+                         (at least order)                 (incluing order)
+
+  3. method signatures   Must be different                Must be same
+
+  4. return types        No restriction                   Must be same but this rules is applicable until
+                                                          1.4 version only. from 1.5 version onwards co-variant
+                                                          return types are allowed.
+
+  5. private,static &    Can be overloaded                Cannot be overriden
+     final methods
+
+  6. access modifiers    No Restriction                   We can't reduce scope of Access modifier but we can
+                                                          increate. ie. public->public, private->public,protected
+
+  7. throws clause       No Restriction                   If child class method throws any checked exception compulsory
+                                                          parent class method should throw the same checked exception
+                                                          are its parent otherwise we will get compile time error but
+                                                          there are no restrictions for unchecked exceptions.
+
+  8. method resolution   Always takes care by compiler    Always takes care by JVM based on Runtime  object.
+                         based on reference type
+
+  9. also known as       Compile time polymorphism        Runtime polymorphism, dynamic polymorphism or
+                         or static polymorphism or        late binding.
+                         early binding.
+

@@ -1,4 +1,4 @@
-Difference between == operator and .equals() method ?
+--Difference between == operator and .equals() method ?
   -In general we use == operator for reference comparison,
    whereas .equals() method for content comparison
   -.equals() method present in object class also meant for reference
@@ -11,4 +11,21 @@ Difference between == operator and .equals() method ?
   String s2 = new String("durga");
   System.out.println(s1==s2);         ==> false
   System.out.println(s1.equals(s2));  ==> true
+
+
+--Different between Comparable and Comparator
+
+  Comparable                        Comparator
+
+ 1.meant for default natural        1.meant for customized sorting order.
+   sorting order.
+
+ 2.present in java.lang package     2.present in java.util package.
+
+ 3.this interface defines only      3.this interface defines two methods:
+   one method: compareTo()            compare() and equals()
+
+ 4.all wrapper classes and String   4.the only implemented classes of
+   class implement comparable         comparator are Collator and
+   interface.                         RuleBasedCollator.
 
