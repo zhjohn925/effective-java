@@ -1,2 +1,1 @@
-class_path/*
-class_path/effective_java/*.*
+class_path/**/*.class
