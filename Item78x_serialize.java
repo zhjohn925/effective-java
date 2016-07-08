@@ -22,16 +22,24 @@ import java.io.*;
 // -By using FileInputStream and ObjectInputStream classes we can achieve
 //  deserialization
 
+//--We can serialize any number of objects to the File. The order to 
+//  deserialized has to be same as the order to serialized.
+
 class Dog implements Serializable {
 	int x1 = 10;
 	int x2 = 20;
 	static int x3 = 30;
-	//transient sets the avariable to default value
+	//transient is a Modifier applicable only for variables.
+	//  it sets the avariable to default value
 	//  during serialization 
 	transient int x4 = 40;
-	//static variable is considered to be not part of the object
-  //hence transient has no effect to static variables 
+	//static variables are considered not to be part of 
+	//  the object state. hence they won't participate in
+	//  serialization. 
+  //  transient has no impact on static variables 
 	transient static int x5 = 50;
+  //transient has no impact on final varaibles 
+	transient final int x6 = 60;
 }
 
 public class Item78x_serialize {
@@ -50,6 +58,6 @@ public class Item78x_serialize {
     System.out.println("static x3 (was 30) = "+d2.x3);
     System.out.println("transient x4 (was 40) = "+d2.x4);
     System.out.println("transient static x5 (was 50) = "+d2.x5); 
-
+    System.out.println("transient final x6 (was 60) = "+d2.x6);
 	}
 }
