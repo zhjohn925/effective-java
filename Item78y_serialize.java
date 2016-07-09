@@ -76,7 +76,6 @@ public class Item78y_serialize {
 	    } catch (Exception e) {
 	    	break;
 	    }
-
     }
   }
 }
