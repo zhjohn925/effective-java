@@ -12,6 +12,9 @@ import java.io.*;
 //If no customize serialization methods are defined,
 //  the password will be null due to transient modifier.
 
+//transient modifier has no effect in the case of customized 
+//  serialization is implemented.
+
 //serialVersionUID is required to implement serialization
 //  and deserialization in different JVMs. Even Account
 //  class is changed by adding some variables, deserialization

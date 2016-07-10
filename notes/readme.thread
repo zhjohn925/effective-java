@@ -1,0 +1,113 @@
+
+//--Defining a thread:
+//
+// -1. By extending Thread class:
+//                    extends           implements
+//    MySimpleThread ---------> Thread ------------> Runnable (Interface)
+//
+// -2. By implementing Runnable interface:
+//                              implements
+//    MySimpleRunnable ---------------------------> Runnable (Interface)
+
+
+
+//Thread::start() method performs:
+//	start() {
+//		1. Register this thread with thread schedular
+//		2. Perform all other mandatory activities
+//    3. Invokes run()
+//	}
+//
+//Thread::start() method calls no-argument run() method only
+//
+//Runnable interface has no start() method
+//   (new Runnable()).start() will get runtime exception
+// instead,  
+//   Runnable r = new Runnable();
+//   Thread t = new Thread(r);
+//   t.start();
+
+//Thread class:
+//  1. Thread t = new Thread();
+//  2. Thread t = new Thread(Runnable r);
+//  3. Thread t = new Thread(String name);
+//  4. Thread t = new Thread(Runnable r, String name);
+//  5. Thread t = new Thread(ThreadGroup g, Runnable r);
+//  6. Thread t = new Thread(ThreadGroup g, String name);
+//  7. Thread t = new Thread(ThreadGroup g, Runnable r, String name);
+//  8. Thread t = new Thread(ThreadGroup g, Runnable r, String name, long stacksize);
+
+//Thread priority 1..10. (NOT 0..10)
+//  -Thread.MIN_PRIORITY  =  1;
+//   Thread.NORM_PRIORITY =  5;
+//   Thread.MAX_PRIORITY  = 10;
+//  -default main thread priority is 5.
+//   default other threads' priority inherits from parent thread.
+//  -public final int getPriority();
+//   public final void setPriority(int p);  
+//       p is 1..10, otherwise, get IllegalArgument Exception
+//  -Thread t = new Thread();  
+//      inherit priority from parent thread, is 5 inherited from main thread default
+//   t.setPriority(10);
+//      However, some platform won't support setPriority. the above call has no effect 
+//      on thread execution.
+
+//Use these three methods to prevent a thread from execution
+//  1. yield();    --only one native method (no overloaded)
+//  2. join();     --three methods (all with final modifier & throws IE)
+//  3. sleep();    --two methods (one is native), throws IE   
+
+//yield() method pauses the current thread, gives chance to 
+//   the thread with same priority in the waiting list. 
+//   if no thread or lower priority threads in the waiting list,
+//   the current thread continues execution.
+//  Note some platform won't support yield() method.
+//
+//   +-------------+ 
+//   | new Thread()| 
+//   +-----v-------+ 
+//         |
+//      t.start()
+//         |     
+//   +--------------+
+//   |Ready/Runnable|--Thread Schedular 
+//   +-----^--------+  (allocate uproc)
+//         |                |   
+//         ^                |   
+//         |             +--v----+   if run()   +----+    
+//     +---^-----+       |Running|--completed-->|Dead| 
+//     | waiting |       +--v----+              +----+ 
+//     +---^-----+          |
+//         |       if yield()/join()/sleep()    
+//         |             to pause 
+//         ^                | 
+//         +----------<-----v 
+
+//join()
+//  there are two thread t1 and t2. if t1 wants to wait for
+//  t2 completion,  then t1 calls t2.join(). t1 is paused and
+//  put into waiting list.  t1 won't continue execution until 
+//  t2 is completed. 
+//
+// 1. public final void join() throws InterruptedException;
+// 2. public final void join(long millisecond) 
+//          throws InterruptedException;
+// 3. public final void join(long millisecond, int nanosecond) 
+//          throws InterruptedException;
+//
+// Funny case:
+// Thread.currentThread().join()  will cause deadlock (wait for itself)
+//
+
+//sleep:
+//1. public static native void sleep(long milisecond) 
+//          throws InterruptedException;
+//2. public static void sleep(long milisecond, int nanosecond)
+//          throws InterruptedException;
+
+//Thread::interrupt() 
+//  -Only the thread in the sleeping or waiting state got interrupt.
+//   If the target thread is not in sleeping or waiting state, the interrupt 
+//   is not impact until the target thread enters sleeping or waiting state.
+
+
