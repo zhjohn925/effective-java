@@ -1,0 +1,51 @@
+//Synchronization in multi threading
+//  0. synchronized modifier only applies for methods and blocks
+//  1. every Java object has intrinsic locks  
+//     -method with synchronized modifier has object-level lock
+//     -method with static and synchronized has class-level lock 
+//  2. internally, synchronization is implemented by requesting and releasing lock
+//     to control threads execution sequentially    
+//  3. If a thread wants to execute a synchronized method in the given object,
+//     the thread requests the lock from JVM and executes the mothod only after 
+//     acquiring the lock.  Automatically releases the lock once the execution
+//     completes. Internally these are taken care by JVM. 
+//  4. lock is intrinsic for a object, not for the methods in the object.
+//     if a thread (A) acquires the lock of a object and is executing a synchronized
+//     method() in the object. Hence the lock of the object is not available for the
+//     other threads. The other threads want to execute the same or different
+//     synchronzied method in the same object will enter the waiting state 
+//     until thread (A) releases the lock.
+//     ie. ThreadDemo9y_syn.java
+//  5. static method with synchronized has class-level lock, hence
+//     the different threads access this method in the different objects 
+//     of this same class, still run sequentially. 
+//     ie. ThreadDemo9x_syn.java
+//  6. if a class has a synchronized method A (object-level lock) and 
+//     a static synchronized method B (class-level lock), then thread A can request
+//     object-level lock to access method A, and thread B can request class-level 
+//     lock to access method B. both threads run simultaneously. 
+
+//  7. synchronized block: 
+//     --improve performance against synchronized method. since multiple 
+//       threads can access before and after the block simultaneously,
+//       only run the block sequentially.
+//     --syntax:
+//       ex1:   synchronized (this) {
+//                //only the thread acquires lock of current object
+//                //is allowed to execute the block    
+//	              ::::::::     
+//              }
+//       ex2:   //b is an object
+//              synchronized (b) {
+//                //only the thread acquires lock of object b
+//                //is allowed to execute the block    
+//	              ::::::::     
+//              }
+//       ex3:   class C {}
+//              synchronized (C.class) {
+//                //only the thread acquires lock of Class C (class-level lock)
+//                //is allowed to execute the block    
+//	              ::::::::     
+//              }
+
+//  8. A thread can acquire multiple locks from different objects.
