@@ -49,3 +49,33 @@
 //              }
 
 //  8. A thread can acquire multiple locks from different objects.
+
+//  9. The 'Object' class in java has three final methods
+//         -wait(),  notify(), and notifyAll() 
+//     that allow threads to communicate about the locked status of a resource.
+//     ie. ThreadDemox_inner.java
+//     --wait(): it tells the executing thread to give up the lock, and 
+//               enter waiting state.
+//       synchronized (lockObject) {
+//	        while (!condition) {
+//						 lockObject.wait();	
+//          }
+//          //take the action here;
+//       }
+//      --notify(): it wakes up one single thread that called wait() on the same object.
+//                  the waiting thread won't get lock until the current thread 
+//                  (notifier) completes the synchronized block.
+//       synchronized (lockObject) {
+//	        //establish_the_condition
+//						 lockObject.notify();	
+//          //any additional code if needed
+//       }  
+//      --notifyAll(): same as notify() but it wakes up all threads 
+//                  that called wait() on the same object. The highest
+//                  priority thread will run first (but not guaranteed).
+//       synchronized (lockObject) {
+//	        //establish_the_condition
+//						 lockObject.notifyAll();	
+//       }  
+
+
