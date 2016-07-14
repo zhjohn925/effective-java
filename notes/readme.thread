@@ -10,6 +10,12 @@
 //    MySimpleRunnable ---------------------------> Runnable (Interface)
 
 
+//--Java multi-Threading implemented by using two models
+// -Green Thread model:  threads completely controlled by JVM without OS support
+//                       not recommand to use
+// -Native OS(operation system) model: 
+//     threads managed by JVM, with helps of OS 
+
 
 //Thread::start() method performs:
 //	start() {
@@ -109,5 +115,25 @@
 //  -Only the thread in the sleeping or waiting state got interrupt.
 //   If the target thread is not in sleeping or waiting state, the interrupt 
 //   is not impact until the target thread enters sleeping or waiting state.
+
+//Daemon thread:  thread runs background, for example
+//  Garbage collector, Attach listener, Signal dispatcher
+//  - Usually Daemon threads have low proirity. but based on requirement
+//    Daemon threads can run with high prority.  For example, main thread
+//    has priority 5, garbage collector (GC) has 1.  when memory is low,
+//    GC priority is set to 10.  when memory is back to normal, GC priority
+//    is set back to 1.
+//  - main thread can never be daemon thread. -> IllegalThreadStateException
+//  - daemon thread runs in background. Once the last non-daemon thread completes
+//    all daomon threads will be automatically terminated.
+//
+//  - Thread::isDaemon()
+//  - Thread::setDaemon(bool)
+//  
+
+//Thread::stop() method - deprecated.
+//    can cause some issues. not recommand to use.
+//    for example,  a thread is stopped between open a database and 
+//                  close the database. then no way to close database.
 
 

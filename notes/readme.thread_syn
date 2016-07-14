@@ -76,6 +76,14 @@
 //       synchronized (lockObject) {
 //	        //establish_the_condition
 //						 lockObject.notifyAll();	
-//       }  
+//       }
+
+//  10. synchronized modifier is only reason to cause deadlock situation.
+
+//  11. starvation : 
+//      the case with big amount of threads with priority 10, 
+//      but one thread has priority 1.  
+//      the task of all threads won't complete until the low 
+//      priority thread completes.
 
 
