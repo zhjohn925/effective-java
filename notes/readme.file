@@ -1,0 +1,32 @@
+--java.io package
+	1) File   //used to represent both Files and Directories
+		-File f = new File(String name);
+		-File f = new File(String subdir, String name);
+		-File f = new File(File subdir, String name);	
+	2) FileWriter
+	3) FileReader
+	4) BufferedWriter
+	5) BufferedReader
+	6) PrintWriter
+
+--File f = new File("abc.txt");   //represent file
+  //just create File object to represent the "abc.txt", 
+  //  not create physical file yet. if the file "abc.txt" exists, 
+  //  f points to the existing file.
+  f.exists() //false
+  //to create file:
+  f.createNewFile();
+  f.exists()  //now true
+
+--File d = new File("durga");   //represent directory
+  //to make directory
+  d.mkdir();
+  d.exists();  //true
+  File f = new File(d, "demo.txt");
+
+--//assume "E:\\xyz" folder is already existing.
+  File f = new File("E:\\xyz", "demo.txt");
+  f.createNewFile();  
+
+
+

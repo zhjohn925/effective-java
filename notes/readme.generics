@@ -1,0 +1,155 @@
+--generics
+ -to provide type-safety.
+ -to resolve type casting problems.
+ -ArrayList<String> l = new ArrayList<String>();
+  ArrayList --> Base type
+  String -----> Parameter type
+ -Parameter type can only be class, not primitive.
+  ArrayList<int> x = new ArrayList<int>();  //invalid 
+
+ -Polymorphism only applies for the base type, 
+  not for parameter type:
+ 	List<String> l = new ArrayList<String>();       //valid
+ 	Collection<String> l = new ArrayList<String>(); //valid 
+ 	ArrayList<Object> l = new ArrayList<String>();  //invalid
+
+                               +<-- ArrayList 
+                               |     
+ 	Collection(I) <-- List(I) <--+<-- LinkedList
+                               |
+                               +<---Vector <-- Stack   
+
+--type casting
+ -non generic version  
+  	//the elements in collection can be any type. hence
+  	//type casting is required.
+    ArrayList l = new ArrayList();
+    l.add("durga");
+    String name = (String)l.get(0);
+ -generics 
+ 		//type casting is not required
+		ArrayList<String> l = new ArrayList<Sting>();
+    String name = l.get(0); 
+
+--generics class (like template in C++)
+ -class Account<T> {}  //T - type parameter
+  Account<Gold>   a1 = new Account<Gold>(); 
+  Account<Silver> a2 = new Account<Silver>();
+ -class Test<A, B> {}  //can have more than one type parameter.
+  ex: class HashMap<K,V> {}  
+ -Bounded type parameter 
+   *bounded only by extends keyword
+   ex1: T can only be a number
+    	class Test<T extends Number> {} 
+    	Test<Integer> t1 = new Test<Integer>();  //valid
+    	Test<String>  t2 = new Test<String>();   //invalid
+   ex2: T can only be X, 
+        but X can be class, interface and etc
+    	class Test<T extends X>
+    	class Test<T super X>
+ -Define bounded type combination
+   *can take only one class	
+       //invalid since both Number and Thread are class
+       ie. class Test<T extends Number & Thread> {}  //invalid 
+ 	 *must take class(if any) first, then followed 
+ 	  by interface (if any).
+ 	     //invalid Runnable is interface before class Number  
+ 	      ie. class Test<T extends Runnable & Number> {} //invalid
+   *Can take more than one interface. the below are valid. 
+      class Test<T extends Number & Runnable> {}
+      class Test<T extends Runnable & Comparable> {}
+      class Test<T extends Number & Runnable & Comparable> {}
+
+
+--wildcard character(?)
+ -valid examples:
+   void m1(ArrayList<String> l) {}
+   void m1(ArrayList<?> l){}
+   void m1(ArrayList<? extends X> l) {}
+   void m1(ArrayList<? super X> l)  {}
+   ArrayList<?> l = new ArrayList<String>();
+   ArrayList<?> l = new ArrayList<Integer>();
+   ArrayList<? extends Number> l = new ArrayList<Integer>();
+   ArrayList<? super String> l = new ArrayList<Object>();
+ -invalid examples:
+   ArrayList<? extends Number>  l = new ArrayList<String>();
+   // ? can not be on right side
+   ArrayList<?>  l = new ArrayList<?>();
+   ArrayList<?>  l = new ArrayList<? extends Number>();  
+ -within the method with ?, we can only add null
+   void  m1(ArrayList<? extends X> l) {  //OR
+   void  m1(ArrayList<?> l) {
+   		l.add(null); //valid
+   		//any thing else is invalid because
+   		//  we donot know the exact type for ?
+   } 
+ -within the method with ?, we can add null and X  
+   void  m1(ArrayList<? super X> l) {
+   		l.add(X);          //valid
+   		l.add(null);       //valid
+   }  
+
+
+--different between <? extends Parent> and <? super Parent>
+  Assume we have a class "Child" inherits from "Parent" which 
+  inherits from "Grandparent". Then
+  <T extends Parent> accepts either Parent or Child, while
+  <T super Parent> accepts either Parent or GrandParent.
+
+
+--generic method  
+	class Test {
+	  //valid examples:
+		public <T>                           void m1() {}
+		public <T extends Number>            void m2() {}
+		public <T extends Runnable>          void m3() {}
+		public <T extends Number & Runnable> void m4() {}
+		public <T extends Number & Comparable & Runnable> void m5() {}
+		//invalid - violates class first then interface
+		public <T extends Runnable & Number> void m6() {}
+		//invalid - violates extends one class only
+		public <T extends Number & Thread> void m7() {}
+	}
+
+--generic type passed in non-generic method
+  will become non-generic:
+  class Test {
+    //non generic method 
+  	public static void m1(ArrayList l) {
+  		l.add(10);    //valid
+  		l.add(true);  //valid
+  	}
+  	public static void main(String[] args) {
+  		//generic type
+  		ArrayList<String> l = new ArrayList<String>();
+  		l.add("durga");   //valid
+  		//l.add(10);      //invalid
+  		m1(l);   //passed into non-generic method
+  		System.out.println(l);
+  		    //output becomes non-generic: durga, 10, true 
+  	}
+  }
+
+--generic concept is only applicable for compile time, not
+  for run time. The below example compiles OK since compiler
+  check the left side. and runs OK. 
+  ArrayList l = new ArrayList<String>();
+  l.add(10);
+  l.add(true);
+  System.out.println(l);
+
+--compile fails
+  //At compile time, compiler will remove generic syntax.
+  //both methods have same signature. Hence fails.
+  class Test {
+  	public void m1(ArrayList<String> l) {};
+  	public void m1(ArrayList<Integer> l) {};
+  }
+
+
+
+
+
+
+
+
