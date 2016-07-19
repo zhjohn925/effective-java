@@ -28,5 +28,39 @@
   File f = new File("E:\\xyz", "demo.txt");
   f.createNewFile();  
 
+--Important methods of File class:
+	1) boolean exists();
+	2) boolean createNewFile();  //create file if not existing, 
+	                             //return true. otherwise, 
+	                             //no action and return false
+	3) boolean mkdir();
+	4) boolean isFile();
+	5) boolean isDirectory();
+	6) String[] list();  //returns the names of files 
+	                     //and directories present 
+	                     //in specified directory.
+	7) long length();    //returns number of characters 
+	                     //in the specified file.
+	8) boolean delete(); //to delete the file or
+	                     //directory.
 
+--FileWriter
+  //Constructors:
+	//overriding existing data in the file.
+	//create the file if not existing
+	1) FileWriter fw = new FileWriter(String name);
+	2) FileWriter fw = new FileWriter(File f);
+	//append data in the file
+	//create the file if not existing
+	3) FileWriter fw = new FileWriter(String name, boolean append);
+	4) FileWriter fw = new FileWriter(File f, boolean append);
+  //Methods:
+  1) write(int ch);
+  2) write(char[] ch);
+  3) write(String s);
+  4) flush();  //to guarantee the total data written 
+               //properly to the file
+  5) close();
+
+  
 
