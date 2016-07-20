@@ -1,0 +1,4 @@
+//
+
+           http                       JDBC 
+   Browser <--> JavaBean <--> Servlet <--> Database
