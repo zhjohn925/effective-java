@@ -40,6 +40,7 @@ public class WebSites extends JApplet {
 			}
 		);
 		add(new JScrollPane(mainList), BorderLayout.CENTER);
+		//add(new JLabel("model count "+model.size()), BorderLayout.CENTER);
 	}
 
 	private void grabHTMLInfo() {
