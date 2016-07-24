@@ -23,7 +23,7 @@
  2.present in java.lang package     2.present in java.util package.
 
  3.this interface defines only      3.this interface defines two methods:
-   one method: compareTo()            compare() and equals()
+   one method: compareTo(T o)         compare(T o1, T o2) and equals()
 
  4.all wrapper classes and String   4.the only implemented classes of
    class implement comparable         comparator are Collator and
