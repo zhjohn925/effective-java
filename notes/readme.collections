@@ -1,0 +1,102 @@
+-Difference between Arrays and Collections
+		Arrays                    Collections
+---------------------------+-------------------------
+ 1. fixed in size          | 1. growable in nature
+ 2. Wrt memory             | 2. Wrt to memory   
+    (not recommended)      |    recommended
+ 3. Wrt Performance        | 3. Wrt Performance 
+    (recommended)          |    (not recommended)
+ 4. hold only homogeneous  | 4. hold both homogeneous
+    data type elements     |    and heterogeneous
+ 5. no underlying data     | 5. implemented based on
+    structure. Hence no    |    some standard data structure
+    readymade method is    |    Hence readymade method 
+    available.             |    support is available.
+ 6. hold both primitive    | 6. can hold only objects
+    and object types       |
+---------------------------+-------------------------
+
+-Difference between Collection and Collections
+ 1) Collection is interface (I)
+ 		-can be used to represent a group of individual 
+ 			objects as a single entity.
+ 2) Collections is class (C)
+ 		-An utility class that define several utility 
+ 			methods(like sort()) for Collection objects.
+
+
+-Difference between Java and C++
+      JAVA            C++
+ -----------------+-----------------------
+  1.  Collection  |  1. Container
+  2.  Collection  |  2. STL (Standard 
+      Framework   |     Template Library)
+ -----------------+----------------------- 
+
+-9 key interfaces of Collection framework
+	1) Collection (I):
+	  -Considered as root interface of Collection Framework
+	  -There is no concrete class which implements 
+	   	Collection Interface.
+	2) List (I):
+		-where duplicates are allowed, and
+		-insertion order preserved.
+	3) Set (I):
+		-where duplicates are not allowed, and
+		-insertion order not preserved.
+	4) SortedSet(I):	
+		-where duplicates are not allowed, but be
+		-inserted according to some sorting code.
+	5)NavigableSet(I):
+		-child interface of SortedSet.
+		-defines serveral methods for navigation purposes.
+	6)Queue(I):
+		-represent a group of individual objects prior
+			to processing. 
+	  -example of precessing the mails, all mails are 
+	  	stored in the Queue, then should be delivered 
+	  	in "first in first out" order.
+	7)Map(I):
+		-is NOT the child interface of Collection.
+		-represent a group of objects as key value pairs.
+		-both key and value are objects.
+		-duplicated key is not allowed,
+		-but value can be duplicated.
+	8)SortedMap(I):
+		-child of Map(I).
+		-some sorting order of keys.
+	9)NavigableMap(I):
+		-child of SortedMap
+		-defines serveral utility methods for 
+			navigation purpose.
+
+
+-Interface and Class Structure:
+
+	Map(I)<--SortedMap(I)<--NavigableMap(I)<--TreeMap(C)	
+
+                            +<--ArrayList(C)
+                            |     
+ 	Collection(I)<--List(I)<--+<--LinkedList(C)
+          ^  ^              |
+          |  |              +<--Vector(C)<--Stack(C)   
+          |  |		           	(Legacy classes)	
+          |  |
+          | Queue(I)<--+<--PriorityQueue
+          |            ^
+          |            |
+          |       BlockingQueue
+          |            ^ 
+          |            |
+          |      PriorityBlockingQueue
+          |      LinkedBlockingQueue
+          |
+        Set(I)<--SortedSet(I)<--NavigableSet(I)<--TreeSet(C) 
+          ^
+          |
+        HashSet   
+          ^
+          |
+      LinkedHashSet
+           
+
