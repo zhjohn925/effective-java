@@ -1,11 +1,16 @@
+//Item 2:
+//Consider a Builder when faced with many Constructor parameters.
+
+//The builder is typically a static member class (Item 24) of the class
+//it builds.
+
+//Usage:
+//NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8).calories(100)
+//                      .sodium(35).carbohydrate(27).build();
+
+
 package effective_java;
 
-////////////////////////////////////////////////////////////////////
-// javac -d  class_path  Item2_builder_pattern.java
-// java  -cp class_path  effective_java/Item2_builder_pattern 
-////////////////////////////////////////////////////////////////////
-
-//Builder Pattern 
 //public class NutritionFacts
 class NutritionFacts {
     private final int servingSize;
@@ -15,6 +20,7 @@ class NutritionFacts {
     private final int sodium;
     private final int carbohydrate;
     
+    //The NutritionFacts class is immutable
     //private NutritionFacts constructor
     private NutritionFacts(Builder builder) {
         servingSize = builder.servingSize;
@@ -34,6 +40,8 @@ class NutritionFacts {
         System.out.println("carbohydrate: "+this.carbohydrate);
     }
     
+    //The builder is typically a static member class,
+    //which is invoked by NutritionFacts.Builder(240, 8)     
     public static class Builder {
         //Required parameters
         private final int servingSize;
@@ -53,6 +61,12 @@ class NutritionFacts {
             //return NutritionFacts object by calling private NutritionFacts constructor
             return new NutritionFacts(this);
         }
+        //Setters
+        //The builder's setter methods return the builder itself so that 
+        //invocations can be chained, resulting in a fluent API
+        //ie. 
+        //NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8).calories(100)
+        //                      .sodium(35).carbohydrate(27).build();
         public Builder calories(int val) {
             calories = val;
             return this;
@@ -75,7 +89,7 @@ class NutritionFacts {
     
 }
 
-public class Item2_builder_pattern {
+public class Item002a_builder_pattern {
     public static void main(String args[]) {
         NutritionFacts cocaCola = new NutritionFacts.Builder(230,8).calories(100)
                                     .sodium(35).carbohydrate(27).build();
