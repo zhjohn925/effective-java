@@ -1,5 +1,8 @@
 // Java
-- you can only inherit from one class in Java) and as many interfaces as you want.  
+- You can only inherit from one class in Java) and as many interfaces as you want.  
+- An immutable class is simply a class whose instances cannot be modified. All of 
+  the information contained in each instance is fixed for the lifetime of the object.
+  ie. String, the boxed primitive classes, BigInteger and BigDecimal. 
 
 // Start github
 $ git config --global user.email "zhjohn925@gmail.com"
