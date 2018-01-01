@@ -14,12 +14,13 @@
 //   x.equals(null) must return false.
 
 //Note:
-//There is no way to extend an instantiable class
+//There is no way to extend an instantiable class (ie. not an abstract class)
 //and add a new member while preserving the equals contract
 
-//Override equals() in subclasses can cause trouble !
-//Can cause infinite recursion !
-//!!!Output: Exception in thread "main" java.lang.StackOverflowError
+//????????
+//The Liskov substitution principle says that any important property
+//of a type should also hold for all its subtypes so that any method
+//written for the type should work equally well on its subtypes
 
 package effective_java;
 
@@ -29,6 +30,7 @@ class Point
 {
 	private final int x;
 	private final int y;
+	private int hashCode;  //Automatically initialized to 0
 
 	public Point(int x, int y)
 	{
@@ -37,11 +39,21 @@ class Point
 
 	@Override public boolean equals (Object o)
 	{
-		//it seems this is not got called ?
-		//System.out.println("equals is called");
 		if (!(o instanceof Point)) return false;
 		Point p = (Point)o;
 		return (p.x==x && p.y==y);
+	}
+
+  //hashCode method with lazily initialized cached hash code
+	@Override public int hashCode() 
+	{
+     int result = hashCode;
+     if (result==0) {
+       result = Integer.hashCode(x);
+       result = 31*result + Integer.hashCode(y);
+       hashCode = result;
+     }
+     return result;
 	}
 }
 
@@ -54,19 +66,12 @@ class UnitCircle
 
   private static final Set<Point> unitCircle = 
           new HashSet<>(Arrays.asList(new Point(1, 0), new Point(0, 1), 
-          	                          new Point(-1, 0), new Point(0, -1)));  
-
-	private static final Set<String> h = new HashSet<>(Arrays.asList("a", "b"));       	                     
+          	                          new Point(-1, 0), new Point(0, -1)));         	                     
 
 	public static boolean onUnitCircle(Point p)
 	{
 		return unitCircle.contains(p);
 	}  
-
-	public static boolean hasString(String s)
-	{
-		return h.contains(s);
-	}
 }
 
 
@@ -75,9 +80,11 @@ public class Item010e_override_equals_contract
 	public static void main(String args[])
 	{
     Point x_pos1 = new Point(1, 0);
-    //false -- I donot understand yet
+    //Output:
+    //  "x_pos1 in unitCircle: true"
+    //Note:
+    //  false -- If skip overriding hashCode() 
     System.out.println("x_pos1 in unitCircle: "+UnitCircle.onUnitCircle(x_pos1));
-    //true
-    System.out.println("hasString(a): "+UnitCircle.hasString("a")); 
+    
 	}
 }

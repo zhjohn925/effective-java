@@ -14,11 +14,15 @@
 //   x.equals(null) must return false.
 
 //Note:
-//There is no way to extend an instantiable class
+//There is no way to extend an instantiable class (ie. not an abstract class)
 //and add a new member while preserving the equals contract
 
 //Override equals() in subclasses can cause trouble !
 //Can violate transitivity !
+
+//Adds a new value component without violating the equals contract by
+//not having ColorPoint extend Point, but giving ColorPoint a private Point field.
+//See below ColorPointII class
 
 package effective_java;
 
@@ -43,6 +47,7 @@ class Point
 		return (x==p.x && y==p.y);
 	}
 }
+
 
 class ColorPoint extends Point
 {
@@ -73,6 +78,32 @@ class ColorPoint extends Point
 }
 
 
+//Adds a new value component without violating the equals contract
+class ColorPointII 
+{
+	private final Point point;
+	private final Color color;  //new value component
+
+	public ColorPointII(int x, int y, Color c)
+	{
+    point = new Point(x, y);
+    this.color = Objects.requireNonNull(c);
+	}
+
+  public Point asPoint() { return point; }
+
+  //This fixes symmetry violation, but
+	//violates transitivity !
+	@Override public boolean equals(Object o)
+	{
+		if (!(o instanceof ColorPointII)) return false;
+    ColorPointII cp = (ColorPointII)o;
+		//o is a ColorPoint, do a full comparison
+		return cp.point.equals(point) && cp.color.equals(color);
+	}
+}
+
+
 public class Item010c_override_equals_contract
 {
 	public static void main(String args[])
@@ -84,14 +115,27 @@ public class Item010c_override_equals_contract
     //Output: symmetry violation is fixed but looks incredible.
 		//  p.equals(cp_r) is true
     //  cp_r.equals(p) is true
+    System.out.println("Symmetry violation is fixed but looks incredible:");
 		System.out.println("p.equals(cp_r) is "+p.equals(cp_r));
 		System.out.println("cp_r.equals(p) is "+cp_r.equals(p));
 		//Output: violates transitivity !
     //  cp_r.equals(p) is true
     //  p.equals(cp_b) is true
     //  cp_r.equals(cp_b) is false
+    System.out.println("See this fix violates transitivity:");
 		System.out.println("cp_r.equals(p) is "+cp_r.equals(p));
 		System.out.println("p.equals(cp_b) is "+p.equals(cp_b));
 		System.out.println("cp_r.equals(cp_b) is "+cp_r.equals(cp_b));
+		//Good solution.
+		//  cp_r2.equals(p) is false
+    //  p.equals(cp_b2) is false
+    //  cp_r2.equals(cp_b2) is false
+		ColorPointII cp_r2 = new ColorPointII(1, 2, Color.RED);
+    ColorPointII cp_b2 = new ColorPointII(1, 2, Color.BLUE);
+		System.out.println("Try to add a new value component without violating the equals contract:");
+		System.out.println("cp_r2.equals(p) is "+cp_r2.equals(p));
+		System.out.println("p.equals(cp_b2) is "+p.equals(cp_b2));
+		System.out.println("cp_r2.equals(cp_b2) is "+cp_r2.equals(cp_b2));
+
 	}
 }

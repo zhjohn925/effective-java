@@ -14,7 +14,7 @@
 //   x.equals(null) must return false.
 
 //Note:
-//There is no way to extend an instantiable class
+//There is no way to extend an instantiable class (ie. not an abstract class)
 //and add a new member while preserving the equals contract
 
 package effective_java;
