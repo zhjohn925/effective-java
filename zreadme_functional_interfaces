@@ -1,0 +1,29 @@
+
+The six basic functional interfaces are summarized below:
+
+//java.util.Function
+
+//The basic interfaces operate on object reference types.
+//- The Operator interfaces represent functions, whose result and argument types
+//  are the same.
+//- The Predicate interface represents a function that takes an argument and 
+//  returns a boolean.
+//- The Function interface represents a function, whose argument and return types 
+//  differ.
+//- The Supplier interface represents a function that takes no arguments and returns
+//  (or supplies) a value.
+//- The Consumer represents a function that takes an argument and returns nothing,
+//  essentially consuming its argument.
+
+Interface            Function Signature             Example
+
+UnaryOperator<T>     T apply(T t)                   String::toLowerCase
+BinaryOperator<T>    T apply(T t1, T t2)            BigInteger::
+Predicate<T>         boolean test(T t)              Collection::
+Function<T,R>        R apply(T t)                   Arrays::asList
+Supplier<T>          T get()                        Instant::now
+Consumer<T>          void accept(T t)               System.out::
+
+//Always annotate your functional interfaces with the @FunctionalInterface
+//annotation; it keeps you honest because the interface won't compile
+//unless it has exactly one abstract method. 
