@@ -15,6 +15,9 @@ $ git commit -m"add item1"
 //push to the remote branch "master"
 $ git push origin master
 
+//update local from remote repository
+$ git pull origin master
+
 
 // Compile and run java
 $ javac -d  class_path  Item002a_builder_pattern.java
