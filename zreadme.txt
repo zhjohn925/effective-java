@@ -1,3 +1,15 @@
+//Help:
+- For questions about using Eclipse
+http://help.eclipse.org/neon/index.jsp
+- For Java libraries and utilities:
+https://docs.oracle.com/javase/7/docs/api/
+https://docs.oracle.com/javase/8/docs/api/
+- For using Unfolding Maps in the Project:
+http://unfoldingmaps.org/tutorials/index.html
+- the SQLite library 
+https://bitbucket.org/xerial/sqlite-jdbc/
+
+
 // Java
 - You can only inherit from one class in Java) and as many interfaces as you want.  
 - An immutable class is simply a class whose instances cannot be modified. 
@@ -22,6 +34,9 @@ $ git pull origin master
 // Compile and run java
 $ javac -d  class_path  Item002a_builder_pattern.java
 $ java  -cp class_path  effective_java/Item002a_builder_pattern 
+
+
+
 
 
 
