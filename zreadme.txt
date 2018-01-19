@@ -6,8 +6,11 @@ https://docs.oracle.com/javase/7/docs/api/
 https://docs.oracle.com/javase/8/docs/api/
 - For using Unfolding Maps in the Project:
 http://unfoldingmaps.org/tutorials/index.html
+http://unfoldingmaps.org/tutorials/mapprovider-and-tiles.html#
 - the SQLite library 
 https://bitbucket.org/xerial/sqlite-jdbc/
+- earthquake data
+http://earthquake.usgs.gov
 
 
 // Java
