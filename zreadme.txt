@@ -7,10 +7,16 @@ https://docs.oracle.com/javase/8/docs/api/
 - For using Unfolding Maps in the Project:
 http://unfoldingmaps.org/tutorials/index.html
 http://unfoldingmaps.org/tutorials/mapprovider-and-tiles.html#
+http://unfoldingmaps.org/javadoc/, and in particular look at the UnfoldingMap class
+https://processing.org/reference/, for background colors/patterns
+- A full list of map providers can be found here:
+http://unfoldingmaps.org/javadoc/de/fhpotsdam/unfolding/providers/package-summary.html 
 - the SQLite library 
 https://bitbucket.org/xerial/sqlite-jdbc/
 - earthquake data
-http://earthquake.usgs.gov
+http://earthquake.usgs.gov   
+
+
 
 
 // Java
@@ -32,6 +38,11 @@ $ git push origin master
 
 //update local from remote repository
 $ git pull origin master
+
+//fix merge issue
+$ git fetch origin
+$ git reset --hard origin/master
+$ git pull
 
 
 // Compile and run java
