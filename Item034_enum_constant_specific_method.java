@@ -38,9 +38,14 @@ enum Operation
 	TIMES("*")  { public double apply(double x, double y) { return x*y; } },
 	DIVIDE("/") { public double apply(double x, double y) { return x/y; } };
 
+  ///////////////////////////////////////////////////////////////// 
+  //Below are common constructor and member variables & functions 
+  //for each above enum
+  ///////////////////////////////////////////////////////////////// 
+  
   private final String symbol;
 
-	//constructor
+	//constructor with String parameter
 	Operation (String symbol) { this.symbol = symbol; }
 
   //override to print symbol for each enum 
