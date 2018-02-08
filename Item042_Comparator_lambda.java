@@ -1,6 +1,8 @@
 //Item 42: Prefer Lambdas to Anonymous classes:
 //This example replaces anonymous class by a lambda
 
+//The sort() second paramater is Comparator instance will be replaced by lambda
+//static <T> void Collections::sort(List<T> list, Comparator<? super T> c)
 
 //javac -d class_path Item042_Comparator_lambda.java 
 //java -cp class_path effective_java/Item042_Comparator_lambda

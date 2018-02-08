@@ -1,5 +1,9 @@
 //Item 45:
 //Use streams judiciously
+//-The elements in a stream can come from anywhere. Common sources include
+// collections, arrays, files, regular expression pattern matchers, 
+// pseudorandom number generators, and other streams.
+//-The data elements in a stream can be object references or primitive values. 
 
 package effective_java;
 
