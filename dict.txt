@@ -1,9 +1,12 @@
-abc
+acb
 weird
 surprise
 hello
 here
 what
-abc
-weird
-surprise
+Abc
+wdeir
+prisesur
+bca
+bAc
+cAb
