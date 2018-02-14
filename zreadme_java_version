@@ -1,0 +1,16 @@
+// Pick java version to compile the code 
+% /usr/libexec/java_home -v 9.0.4 --exec javac -version
+
+//OR:
+//use export to set which java version to be default version
+//Put this in .bash_profile   Or  
+//Run once in the Terminal
+//tick `
+$ export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_91`
+//OR:
+$ export JAVA_HOME=`/usr/libexec/java_home -v 9.0.4`
+
+
+$ ls /Library/Java/JavaVirtualMachines
+jdk-9.0.4.jdk	jdk1.8.0_73.jdk	jdk1.8.0_77.jdk	jdk1.8.0_91.jdk
+
