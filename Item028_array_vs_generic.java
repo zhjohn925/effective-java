@@ -20,8 +20,8 @@
 
 package effective_java;
 
-// $ javac -d class_path Item028a_array_vs_generic.java 
-// $ java -cp class_path effective_java/Item028a_array_vs_generic
+// $ javac -d class_path Item028_array_vs_generic.java 
+// $ java -cp class_path effective_java/Item028_array_vs_generic
 //   Output:
 //   Choose a random integer: 3
 
@@ -79,7 +79,7 @@ class Chooser<T> {
   }
 }
 
-public class Item028a_array_vs_generic
+public class Item028_array_vs_generic
 {
   public static void main(String args[])
   {
