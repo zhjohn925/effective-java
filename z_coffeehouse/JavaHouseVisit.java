@@ -11,7 +11,11 @@ import java.util.function.Predicate;
  * @author Juneau
  */
 public class JavaHouseVisit {
-    public static void main(String[] args){
+    public static void main(String[] args)
+    {
+        ////////////////////////////////////////////////
+        //Customer comes to Java House to buy coffees:
+        ////////////////////////////////////////////////
         JavaHouse javaHouse = new JavaHouse();
         javaHouse.addCup(new ItalianRoast(), 12);
         javaHouse.addCup(new FrenchRoast(), 16);
@@ -20,6 +24,9 @@ public class JavaHouseVisit {
         //javaHouse.addCup(new Integer(3), 3);  Not a CoffeeType, so does not compile
         javaHouse.checkout();
 
+        ////////////////////////////////////////////////
+        //Coffee sale details
+        ////////////////////////////////////////////////
         // Retrieve the current purchase list
         List<CoffeeSaleType> purchaseList = javaHouse.getCurrentPurchase();
         System.out.println("Number of items in purchase: " + purchaseList.size());
@@ -27,15 +34,25 @@ public class JavaHouseVisit {
         // Print some further details on the purchased types to learn what our
         // customer enjoys
         purchaseList.stream().forEach((coffeeSale) -> {
-            System.out.println(coffeeSale.getType().getType() + " Description - " +
-                    coffeeSale.getType().getDescription());
+            //coffeeSale.getType() returns a CoffeeType object (ie. DoughnutRoast)
+            //the second .getType() calls CoffeeType::getType() 
+            //.getSimpleName() cuts off the package path, print class name only
+            System.out.println(coffeeSale.getType().getType().getSimpleName() + 
+                " Description - " + coffeeSale.getType().getDescription());
         });
 
         // How many of the ItalianRoast are contained in this purchase
         System.out.println("Number of Italian Roasts: " +
                 javaHouse.countTypes(ItalianRoast.class));
         
-        List<CoffeeType> coffeeList = new ArrayList();
+        
+        /////////////////////////////////////////////////
+        //Check out the coffees in the stock
+        /////////////////////////////////////////////////
+        //NOTE: skip <> will get compile warning
+        //   "use unchecked or unsafe operations"
+        List<CoffeeType> coffeeList = new ArrayList<>();
+        
         coffeeList.add(new DoughnutRoast());
         coffeeList.add(new FrenchRoast());
         coffeeList.add(new HouseBlend());

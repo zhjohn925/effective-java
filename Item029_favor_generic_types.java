@@ -1,5 +1,8 @@
 //Item 29: Favor Generic Types
 
+//This code can also be implemented in Item031_use_bounded_wildcards.java
+//to increase API flexibility
+
 //Write your own generic types, stack implementation from Item 7.
 
 package effective_java;

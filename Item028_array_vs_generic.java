@@ -24,6 +24,7 @@ package effective_java;
 // $ java -cp class_path effective_java/Item028_array_vs_generic
 //   Output:
 //   Choose a random integer: 3
+//   Choose a random integer: 7
 
 
 import java.util.*;
@@ -79,6 +80,19 @@ class Chooser<T> {
   }
 }
 
+class ChooserWithWildCard<T> {
+  private final List<T> choiceList;
+  
+  public ChooserWithWildCard(Collection<? extends T> choices) {
+    choiceList = new ArrayList<>(choices);
+  }
+  
+  public T choose() {
+    Random rnd = ThreadLocalRandom.current();
+    return choiceList.get(rnd.nextInt(choiceList.size()));
+  }
+}
+
 public class Item028_array_vs_generic
 {
   public static void main(String args[])
@@ -88,8 +102,17 @@ public class Item028_array_vs_generic
       intList.add(i);
     }
     
-    Chooser<Integer> option = new Chooser<Integer>(intList);
+    //error: incompatible types: List<Integer> cannot be converted 
+    //       to Collection<Number>
+    //
+    //Chooser<Number> option = new Chooser<Number>(intList);
+    //
+    Chooser<Integer> option = new Chooser<>(intList);
     System.out.println("Choose a random integer: " + option.choose());
+    
+    //Use wildcard to be more flexible and also fix the above compile error
+    ChooserWithWildCard<Number>  optionWild = new ChooserWithWildCard<>(intList);
+    System.out.println("Choose a random integer: " + optionWild.choose());
     
   }
 }

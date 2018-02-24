@@ -1,0 +1,30 @@
+
+//compile script will create directory ./org/javase/genericsexamples/coffeehouse
+//$ javac -d . *.java
+//$ java -cp . org/javase/genericsexamples/coffeehouse/JavaHouseVisit
+
+
+// compile script will create directory 
+// ../class_path/org/javase/genericsexamples/coffeehouse
+$ javac -d ../class_path *.java
+$ java -cp ../class_path org/javase/genericsexamples/coffeehouse/JavaHouseVisit
+
+
+////////////////////////
+JAVA HOUSE:
+////////////////////////
+
+         abstract CoffeeType                        interface CoffeeSaleType
+            /   |   |  \                                   /       \
+           /    |   |   \                                Cup (I)   Bag (I)  
+          /     |   |   ItalianRoast                     /           \
+         /      |   |    (Dark)                       CoffeeCup     CoffeeBag 
+        /       |   |   
+       /        |  HouseBlend
+      /         |   (Light)
+     /          |
+    /      FrenchRoast    
+   /        (Dark)
+  / 
+DoughnutRoast  
+(Medium)

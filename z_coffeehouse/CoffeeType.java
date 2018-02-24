@@ -20,6 +20,7 @@ public abstract class CoffeeType {
     static final String WHOLE_BEAN = "WHOLE_BEAN";
     
     public Class<? extends CoffeeType> getType(){
+        //System.out.println("jz-debug: "+this.getClass());
         return this.getClass();
     };
     

@@ -17,7 +17,9 @@ public class ItalianRoast extends CoffeeType implements Dark {
     List<String> description;
     
     public ItalianRoast(){
-        description = new ArrayList();
+        //NOTE: skip <> will get compile warning
+        //   "use unchecked or unsafe operations"
+        description = new ArrayList<>();
         description.add(BOLD);
         description.add(ROBUST);
         description.add(WINEY_UNDERTONES);

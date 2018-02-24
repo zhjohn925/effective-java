@@ -12,7 +12,9 @@ public class DoughnutRoast extends CoffeeType implements Medium {
     List<String> description;
     
     public DoughnutRoast(){
-        description = new ArrayList();
+        //NOTE: skip <> will get compile warning
+        //   "use unchecked or unsafe operations"
+        description = new ArrayList<>();
         description.add(AROMATIC);
         description.add(SWEET);
         description.add(GROUND);

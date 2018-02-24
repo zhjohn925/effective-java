@@ -13,7 +13,9 @@ public class FrenchRoast extends CoffeeType implements Dark {
     List<String> description;
     
     public FrenchRoast(){
-        description = new ArrayList();
+        //NOTE: skip <> will get compile warning
+        //   "use unchecked or unsafe operations"
+        description = new ArrayList<>();
         description.add(AROMATIC);
         description.add(BOLD);
         description.add(WHOLE_BEAN);

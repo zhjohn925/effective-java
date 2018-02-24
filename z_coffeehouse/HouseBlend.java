@@ -14,7 +14,9 @@ public class HouseBlend extends CoffeeType implements Light {
     List<String> description;
     
     public HouseBlend(){
-        description = new ArrayList();
+        //NOTE: skip <> will get compile warning
+        //   "use unchecked or unsafe operations"
+        description = new ArrayList<>();
         description.add(TOASTY);
         description.add(GROUND);
     }
