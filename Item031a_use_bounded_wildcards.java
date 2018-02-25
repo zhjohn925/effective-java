@@ -1,6 +1,14 @@
 
 package effective_java;
 
+//- For maximum flexibility, use wildcard types on input parameters 
+//  that represent producers or consumers.
+//- PECS stands for producer-extends, consumer-super. In other words, 
+//  if a parameterized type represents a T producer, use <? extends T>; 
+//  if it represents a T consumer, use <? super T>.
+//- See GenericDemo_comparable.java
+
+
 import java.util.*;
 
 class Stack <E> {
@@ -79,7 +87,7 @@ class Stack <E> {
 
 }
 
-public class Item031_use_bounded_wildcards
+public class Item031a_use_bounded_wildcards
 {
   public static void main(String args[])
   {
