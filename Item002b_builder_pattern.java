@@ -13,16 +13,19 @@ import java.util.*;
 abstract class Pizza
 {
 	public enum Topping { HAM, MUSHROOM, ONION, PEPPER, SAUSAGE }
-	final Set<Topping> toppings;
+	
+	//EnumSet class implements Set interface
+	final Set<Topping> p_toppings;
 
   //constructor
   Pizza(Builder<?> builder) 
   {
-  	toppings = builder.toppings.clone();    //see Item 50
+  	p_toppings = builder.toppings.clone();    //see Item 50
   }
 
   //Defined as static can be invoked by Pizza.Builder() 
-  //Generics T is required to implement in Builder class
+  //Generics T is required to implement in Builder class, T
+  //represents Builder itself (recursive)
 	abstract static class Builder<T extends Builder<T>> 
 	{
 		//member varaible with initail value
@@ -34,6 +37,8 @@ abstract class Pizza
 			return self();  //be overrided, return subclass' Builder object
 		}
 
+    //this method is called at the end after other Builder methods 
+    //to produce a pizza, like Stream terminal function
 		abstract Pizza build();
 
 		//Subclasses must override this method to return 'this'. 
