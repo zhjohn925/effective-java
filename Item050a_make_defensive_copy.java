@@ -1,5 +1,9 @@
 //You must program defensively, with the assumption that clients
 //of your class will do their best to destroy its invariants.
+//While this item says: 
+//"Don't reuse an existing object when you should create a new one"
+//.vs. Item 6:
+//"Don't create a new object when you should reuse an existing one"
 
 package effective_java;
 
